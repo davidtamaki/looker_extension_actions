@@ -1,0 +1,63 @@
+{
+  "name": "extension-actions-example",
+  "version": "0.0.1",
+  "description": "Example of sending data to oauth-enabled Action Hub destinations from Looker extension framework",
+  "main": "dist/bundle.js",
+  "author": "David Szajngarten",
+  "license": "Apache-2.0",
+  "scripts": {
+    "analyze": "export ANALYZE_MODE=static && yarn build",
+    "develop": "webpack serve --hot --port 8080 --disable-host-check --config webpack.develop.js",
+    "prebuild": "yarn clean",
+    "clean": "rm -rf dist",
+    "build": "export BABEL_ENV=build && webpack --config webpack.prod.js"
+  },
+  "dependencies": {
+    "@looker/components": "^2.5.0",
+    "@looker/extension-sdk-react": "^21.4.5",
+    "@looker/sdk": "^21.4.3",
+    "lodash": "^4.17.15",
+    "react": "^16.14.0",
+    "react-dom": "^16.14.0",
+    "react-is": "^16.13.1",
+    "react-router-dom": "^5.1.2",
+    "styled-components": "^5.2.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.13.8",
+    "@babel/plugin-transform-react-jsx": "^7.13.12",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
+    "@babel/preset-typescript": "^7.12.7",
+    "@babel/runtime": "^7.12.5",
+    "@types/react": "^16.14.2",
+    "@types/react-dom": "^16.9.10",
+    "babel-loader": "^8.2.2",
+    "babel-loader-exclude-node-modules-except": "^1.1.2",
+    "babel-preset-nano-react-app": "^0.1.0",
+    "react-hot-loader": "^4.12.20",
+    "typescript": "4.1.2",
+    "webpack": "^5.10.0",
+    "webpack-bundle-analyzer": "^4.2.0",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "babel": {
+    "presets": [
+      "nano-react-app"
+    ],
+    "plugins": [
+      [
+        "@babel/plugin-proposal-class-properties"
+      ],
+      [
+        "@babel/plugin-transform-react-jsx",
+        {
+          "pragmaFrag": "React.Fragment"
+        }
+      ]
+    ]
+  }
+}

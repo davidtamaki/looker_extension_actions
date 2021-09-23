@@ -46,10 +46,10 @@ export const Demo: React.FC = () => {
   const { core40SDK } = extensionContext;
 
   // for query builder
-  const [model, setModel] = useState("salesforce");
-  const [explore, setExplore] = useState("salesforce_random");
+  const [model, setModel] = useState("google_analytics_360");
+  const [explore, setExplore] = useState("ga_sessions");
   const [fields, setFields] = useState(
-    "salesforce_contacts.contact_id, salesforce_contacts.email, salesforce_contacts.name"
+    "user_sales_data.users_email, user_sales_data.users_city, user_sales_data.users_state, user_sales_data.users_country, user_sales_data.users_zip"
   );
   const [limit, setLimit] = useState("20");
 
@@ -128,9 +128,6 @@ export const Demo: React.FC = () => {
     const currentTimestamp = new Date(Date.now()).toLocaleString();
     const name = `Sent from Extension - ${currentTimestamp}`;
     const destination = `looker-integration://${destinationSelect}`;
-
-    console.log(destinationSelect);
-    console.log(JSON.stringify(actionFormParams));
 
     try {
       await core40SDK.ok(
@@ -249,7 +246,6 @@ const DisplayActionForm = (props: any) => {
   const onChangeFormSelectParams = (key: string, e: any, fieldType: string) => {
     let params = JSON.parse(JSON.stringify(actionFormParams));
     params[key] = fieldType === "text" ? e.target.value : e;
-    console.log(params);
     setActionFormParams(params);
     props.setActionFormParams(params);
   };
